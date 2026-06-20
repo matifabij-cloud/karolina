@@ -124,6 +124,16 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 26px rgba(12,26,75,.32);
     }
+    /* Outline navy (na jasnym hero) */
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(12,26,75,.35);
+    }
+    .btn-outline:hover {
+      border-color: var(--navy);
+      background: rgba(12,26,75,.05);
+    }
 
     /* REVEAL */
     .reveal {
@@ -243,7 +253,7 @@
 
     /* ── HERO ── */
     #strona-glowna {
-      background: var(--navy);
+      background: #FFFFFF;
       min-height: 100vh;
       padding-top: var(--navbar-h);
       position: relative;
@@ -256,8 +266,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 80% at 75% 55%, rgba(31,49,128,.5) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(8,14,44,.55) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 70% at 82% 45%, rgba(12,26,75,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 60% at 8% 92%, rgba(12,26,75,.035) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero__grid {
@@ -283,27 +293,27 @@
       font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.55);
+      color: rgba(12,26,75,.6);
       margin-bottom: 24px;
     }
     .hero__eyebrow::before {
       content: '';
       display: block;
       width: 32px; height: 1px;
-      background: rgba(255,255,255,.4);
+      background: rgba(12,26,75,.45);
     }
     .hero__title {
-      color: var(--white);
+      color: var(--navy);
       font-weight: 600;
       margin-bottom: 28px;
       line-height: 1.08;
     }
     .hero__title em {
       font-style: italic;
-      color: rgba(255,255,255,.78);
+      color: rgba(12,26,75,.62);
     }
     .hero__lead {
-      color: rgba(255,255,255,.62);
+      color: var(--text-body);
       font-size: clamp(.95rem, 1.4vw, 1.08rem);
       font-weight: 300;
       line-height: 1.8;
@@ -759,6 +769,16 @@
 
     /* ── KALENDARZ REZERWACJI (cal.com) ── */
     .booking-wrap { max-width: 920px; margin: 0 auto; }
+    .booking-pick {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-body);
+      margin-bottom: 14px;
+    }
     .booking-tabs {
       display: flex;
       gap: 12px;
@@ -1037,7 +1057,7 @@
             karnacją, oczami i włosami.
           </p>
           <div class="hero__cta-row">
-            <a href="#umow-sie" class="btn btn-white">
+            <a href="#umow-sie" class="btn btn-navy">
               Umów się na analizę
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M8.5 3.5 13 8l-4.5 4.5"
@@ -1045,7 +1065,7 @@
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
-            <a href="#o-mnie" class="btn btn-ghost">Poznaj mnie</a>
+            <a href="#o-mnie" class="btn btn-outline">Poznaj mnie</a>
           </div>
         </div>
 
@@ -1226,6 +1246,7 @@
       </div>
 
       <div class="booking-wrap reveal">
+        <p class="booking-pick">Wybierz rodzaj analizy:</p>
         <div class="booking-tabs" role="tablist" aria-label="Rodzaj analizy">
           <button type="button" class="booking-tab is-active" role="tab" aria-selected="true"
                   data-url="https://cal.com/mati-fabij-qdy5ja/analiza-kolorystyczna">
