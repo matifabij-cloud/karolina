@@ -757,6 +757,119 @@
       padding-top: 20px;
     }
 
+    /* ── KALENDARZ REZERWACJI (cal.com) ── */
+    .booking-wrap { max-width: 920px; margin: 0 auto; }
+    .booking-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .booking-tab {
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border: 1px solid var(--navy);
+      background: transparent;
+      color: var(--navy);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .booking-tab:hover { background: rgba(12,26,75,.06); }
+    .booking-tab.is-active {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 4px 18px rgba(12,26,75,.22);
+    }
+    .booking-frame {
+      background: var(--white);
+      border: 1px solid var(--cream-dk);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0,0,0,.055);
+      overflow: hidden;
+    }
+    .booking-frame iframe { display: block; width: 100%; height: 720px; border: 0; }
+    .booking-consents {
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .consent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-family: 'Inter', sans-serif;
+      font-size: .86rem;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    .consent input { margin-top: 4px; flex-shrink: 0; width: 16px; height: 16px; accent-color: var(--navy); }
+    .consent a { color: var(--navy); text-decoration: underline; }
+    .booking-consents__note {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 300;
+      color: #9090AA;
+    }
+    @media (max-width: 768px) {
+      .booking-frame iframe { height: 640px; }
+    }
+
+    /* ── COOKIE BANNER ── */
+    .cookie-banner {
+      position: fixed;
+      left: 16px; right: 16px; bottom: 16px;
+      z-index: 1000;
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--navy);
+      color: rgba(255,255,255,.85);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .cookie-banner[hidden] { display: none; }
+    .cookie-banner__text {
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 300;
+      line-height: 1.55;
+      flex: 1 1 320px;
+    }
+    .cookie-banner__text a { color: #fff; text-decoration: underline; }
+    .cookie-banner__actions { display: flex; gap: 10px; flex-shrink: 0; }
+    .cookie-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.4);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .cookie-btn--accept { background: #fff; color: var(--navy); border-color: #fff; }
+    .cookie-btn--accept:hover { background: #ECE7E0; }
+    .cookie-btn--more { background: transparent; color: rgba(255,255,255,.85); display: inline-flex; align-items: center; }
+    .cookie-btn--more:hover { color: #fff; border-color: #fff; }
+
     /* ── FOOTER ── */
     footer { background: var(--navy); }
     .footer__inner {
@@ -1107,56 +1220,40 @@
         <!-- Eyebrow "Zarezerwuj termin" USUNIĘTY zgodnie z instrukcją -->
         <h2>Umów się</h2>
         <p class="umow__lead">
-          Wybierz dogodny termin i zarezerwuj swoją analizę kolorystyczną.
-          Płatność możliwa kartą, BLIKiem lub szybkim przelewem.
+          Wybierz rodzaj analizy i zarezerwuj dogodny termin bezpośrednio
+          w kalendarzu online.
         </p>
       </div>
 
-      <div class="umow__grid">
-        <div class="calendar-box reveal" id="js-calendar-widget" aria-label="Kalendarz rezerwacji">
-          <div class="calendar-skeleton" aria-hidden="true">
-            <div class="sk-bar w40"></div>
-            <div class="sk-bar w100"></div>
-            <div class="sk-bar w85"></div>
-            <div class="sk-bar w70"></div>
-            <div class="sk-grid">
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-              <div class="sk-cell"></div><div class="sk-cell"></div><div class="sk-cell"></div>
-            </div>
-          </div>
-          <p class="calendar-hint">Widget kalendarza rezerwacji zostanie wklejony w to miejsce</p>
+      <div class="booking-wrap reveal">
+        <div class="booking-tabs" role="tablist" aria-label="Rodzaj analizy">
+          <button type="button" class="booking-tab is-active" role="tab" aria-selected="true"
+                  data-url="https://cal.com/mati-fabij-qdy5ja/analiza-kolorystyczna">
+            Analiza stacjonarna · Łódź
+          </button>
+          <button type="button" class="booking-tab" role="tab" aria-selected="false"
+                  data-url="https://cal.com/mati-fabij-qdy5ja/analiza-kolorystyczna-online">
+            Analiza online
+          </button>
         </div>
 
-        <aside class="payment-panel reveal reveal-d1" aria-label="Informacje o płatności">
-          <div>
-            <p class="payment-panel__title">Bezpieczna rezerwacja i opłata online</p>
-          </div>
-          <p class="payment-panel__desc">Po wybraniu terminu przejdziesz do bezpiecznej bramki płatniczej. Akceptuję karty płatnicze, BLIK oraz szybkie przelewy.</p>
-          <div class="payment-total">
-            <span class="payment-total__label">Do zapłaty:</span>
-            <span class="payment-total__amount">500</span>
-            <span class="payment-total__currency">zł</span>
-          </div>
-          <a href="#" class="stripe-btn" aria-label="Przejdź do bezpiecznej płatności Stripe">
-            <svg width="20" height="9" viewBox="0 0 60 25" fill="none" aria-hidden="true">
-              <path d="M36.5 9.8c0-2 1.7-2.8 4.5-2.8 4 0 9 1.2 13 3.6V2.8C50.5 1 46.5 0 41 0 33.6 0 28 4.6 28 12c0 11.5 15.5 9.6 15.5 14.5 0 2.3-2 3.2-5 3.2-4.3 0-9.8-1.8-14-4.4V34c4.8 2 9.7 2.8 14 2.8 10.8 0 18.2-5.3 18.2-12.8-.1-12.4-15.2-10.2-15.2-14.2z" fill="white" opacity=".85"/>
-            </svg>
-            <span class="stripe-btn__label">Zapłać przez Stripe</span>
-          </a>
-          <div class="stripe-secure">
-            <svg width="13" height="15" viewBox="0 0 13 15" fill="none" aria-hidden="true">
-              <path d="M6.5 1 1 3.5v4C1 10.7 3.5 13.6 6.5 14.5c3-.9 5.5-3.8 5.5-7V3.5L6.5 1z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
-              <path d="m4 7.5 1.5 1.5L9 5.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Płatność szyfrowana SSL – Twoje dane są bezpieczne
-          </div>
-          <p class="payment-note">Po dokonaniu płatności otrzymasz e-mail z potwierdzeniem rezerwacji oraz instrukcją, jak przygotować się do analizy kolorystycznej.</p>
-        </aside>
+        <div class="booking-frame">
+          <iframe id="js-cal-frame" title="Rezerwacja terminu – kalendarz"
+                  src="https://cal.com/mati-fabij-qdy5ja/analiza-kolorystyczna"
+                  loading="lazy"></iframe>
+        </div>
+
+        <form class="booking-consents" aria-label="Zgody przed rezerwacją">
+          <label class="consent">
+            <input type="checkbox">
+            <span>Akceptuję <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a> oraz zapoznałam/em się z <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Polityką prywatności</a>.</span>
+          </label>
+          <label class="consent">
+            <input type="checkbox">
+            <span>Wyrażam zgodę na przetwarzanie przesłanych zdjęć wyłącznie w celu wykonania analizy kolorystycznej (dotyczy analizy online).</span>
+          </label>
+          <p class="booking-consents__note">Zgody potwierdzasz również w trakcie rezerwacji w kalendarzu oraz przy wysyłce zdjęć.</p>
+        </form>
       </div>
     </section>
 
@@ -1190,6 +1287,14 @@
             <li><a href="#umow-sie">Umów się</a></li>
           </ul>
         </nav>
+        <nav aria-label="Dokumenty">
+          <p class="footer__col-title">Dokumenty</p>
+          <ul class="footer__nav-links">
+            <li><a href="regulamin.html">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+            <li><a href="polityka-cookies.html">Polityka cookies</a></li>
+          </ul>
+        </nav>
         <address>
           <p class="footer__col-title">Kontakt i adres</p>
           <p class="footer__contact-text">ul. Centralna 39<br>91-117 Łódź<br>(miejsce parkingowe na miejscu)<br><br>Analiza stacjonarna i online</p>
@@ -1201,6 +1306,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="js-cookie-banner" role="dialog" aria-label="Informacja o plikach cookies" hidden>
+    <p class="cookie-banner__text">
+      Ta strona używa plików cookies oraz osadza treści zewnętrzne (Google Maps, kalendarz rezerwacji),
+      aby zapewnić prawidłowe działanie. Szczegóły znajdziesz w
+      <a href="polityka-cookies.html" target="_blank" rel="noopener">Polityce cookies</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="cookie-btn cookie-btn--accept" id="js-cookie-accept">Akceptuję</button>
+      <a href="polityka-cookies.html" class="cookie-btn cookie-btn--more">Więcej</a>
+    </div>
+  </div>
 
   <script>
     /* Navbar shadow */
@@ -1247,6 +1365,35 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Cookie banner */
+    (function () {
+      const banner = document.getElementById('js-cookie-banner');
+      if (!banner) return;
+      if (!localStorage.getItem('cookieConsent')) banner.hidden = false;
+      const accept = document.getElementById('js-cookie-accept');
+      if (accept) accept.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', '1');
+        banner.hidden = true;
+      });
+    })();
+
+    /* Kalendarz cal.com – przełączanie opcji */
+    (function () {
+      const frame = document.getElementById('js-cal-frame');
+      if (!frame) return;
+      document.querySelectorAll('.booking-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.booking-tab').forEach(t => {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+          frame.src = tab.dataset.url;
+        });
+      });
+    })();
   </script>
 
 </body>
