@@ -203,6 +203,9 @@
     }
     .navbar__links a:hover { color: var(--white); }
     .navbar__links a:hover::after { width: 100%; }
+    .navbar__ig { display: flex; align-items: center; color: rgba(255,255,255,.68); }
+    .navbar__ig::after { display: none; }
+    .navbar__ig:hover { color: var(--white); }
     .navbar__burger {
       display: none;
       flex-direction: column;
@@ -253,7 +256,7 @@
 
     /* ── HERO ── */
     #strona-glowna {
-      background: #FFFFFF;
+      background: var(--navy);
       min-height: 100vh;
       padding-top: var(--navbar-h);
       position: relative;
@@ -266,8 +269,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 70% at 82% 45%, rgba(12,26,75,.05) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 60% at 8% 92%, rgba(12,26,75,.035) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 80% at 75% 55%, rgba(31,49,128,.5) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(8,14,44,.55) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero__grid {
@@ -293,27 +296,27 @@
       font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(12,26,75,.6);
+      color: rgba(255,255,255,.55);
       margin-bottom: 24px;
     }
     .hero__eyebrow::before {
       content: '';
       display: block;
       width: 32px; height: 1px;
-      background: rgba(12,26,75,.45);
+      background: rgba(255,255,255,.4);
     }
     .hero__title {
-      color: var(--navy);
+      color: var(--white);
       font-weight: 600;
       margin-bottom: 28px;
       line-height: 1.08;
     }
     .hero__title em {
       font-style: italic;
-      color: rgba(12,26,75,.62);
+      color: rgba(255,255,255,.78);
     }
     .hero__lead {
-      color: var(--text-body);
+      color: rgba(255,255,255,.62);
       font-size: clamp(.95rem, 1.4vw, 1.08rem);
       font-weight: 300;
       line-height: 1.8;
@@ -839,6 +842,15 @@
       font-weight: 300;
       color: #9090AA;
     }
+    .booking-pay {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      font-weight: 300;
+      color: var(--text-body);
+      margin-top: 18px;
+    }
+    .booking-pay strong { color: var(--navy); font-weight: 600; }
     @media (max-width: 768px) {
       .booking-frame iframe { height: 640px; }
     }
@@ -945,6 +957,20 @@
       color: rgba(255,255,255,.48);
       line-height: 1.75;
     }
+    .footer__contact-text a { color: rgba(255,255,255,.7); text-decoration: none; }
+    .footer__contact-text a:hover { color: #fff; text-decoration: underline; }
+    .footer__ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: .86rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.7);
+      transition: color .2s;
+    }
+    .footer__ig:hover { color: #fff; }
     .footer__bottom {
       display: flex;
       justify-content: space-between;
@@ -1025,6 +1051,15 @@
           <li><a href="#o-mnie">O mnie</a></li>
           <li><a href="#uslugi">Usługi</a></li>
           <li><a href="#umow-sie">Umów się</a></li>
+          <li>
+            <a class="navbar__ig" href="https://www.instagram.com/paleta.stylu/" target="_blank" rel="noopener" aria-label="Instagram – paleta.stylu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+              </svg>
+            </a>
+          </li>
         </ul>
       </nav>
       <button class="navbar__burger" id="js-burger" aria-label="Otwórz menu" aria-expanded="false">
@@ -1038,6 +1073,7 @@
     <a href="#o-mnie"        class="js-nav-link">O mnie</a>
     <a href="#uslugi"        class="js-nav-link">Usługi</a>
     <a href="#umow-sie"      class="js-nav-link">Umów się</a>
+    <a href="https://www.instagram.com/paleta.stylu/" target="_blank" rel="noopener" class="js-nav-link">Instagram</a>
   </nav>
 
   <main>
@@ -1057,7 +1093,7 @@
             karnacją, oczami i włosami.
           </p>
           <div class="hero__cta-row">
-            <a href="#umow-sie" class="btn btn-navy">
+            <a href="#umow-sie" class="btn btn-white">
               Umów się na analizę
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M8.5 3.5 13 8l-4.5 4.5"
@@ -1065,7 +1101,7 @@
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
-            <a href="#o-mnie" class="btn btn-outline">Poznaj mnie</a>
+            <a href="#o-mnie" class="btn btn-ghost">Poznaj mnie</a>
           </div>
         </div>
 
@@ -1264,6 +1300,8 @@
                   loading="lazy"></iframe>
         </div>
 
+        <p class="booking-pay">Płatność: <strong>analiza stacjonarna</strong> – na miejscu; <strong>analiza online</strong> – przelew po rezerwacji.</p>
+
         <form class="booking-consents" aria-label="Zgody przed rezerwacją">
           <label class="consent">
             <input type="checkbox">
@@ -1318,7 +1356,19 @@
         </nav>
         <address>
           <p class="footer__col-title">Kontakt i adres</p>
-          <p class="footer__contact-text">ul. Centralna 39<br>91-117 Łódź<br>(miejsce parkingowe na miejscu)<br><br>Analiza stacjonarna i online</p>
+          <p class="footer__contact-text">
+            ul. Centralna 39<br>91-117 Łódź<br>(miejsce parkingowe na miejscu)<br><br>
+            tel. <a href="tel:+48604341695">604&nbsp;341&nbsp;695</a><br>
+            <a href="mailto:paleta.stylu1@gmail.com">paleta.stylu1@gmail.com</a>
+          </p>
+          <a class="footer__ig" href="https://www.instagram.com/paleta.stylu/" target="_blank" rel="noopener" aria-label="Instagram – paleta.stylu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+            </svg>
+            <span>@paleta.stylu</span>
+          </a>
         </address>
       </div>
       <div class="footer__bottom">
