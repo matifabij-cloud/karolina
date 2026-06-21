@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Karolina Fabijańczyk – profesjonalna analiza kolorystyczna w Łodzi. Odkryj kolory, które podkreślają Twój naturalny urok.">
-  <title>Karolina Fabijańczyk – Analiza Kolorystyczna</title>
+  <title>Karolina Fabijańczyk – Analiza Kolorystyczna w Łodzi</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Podgląd przy udostępnianiu linku (Open Graph) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Karolina Fabijańczyk – Analiza Kolorystyczna w Łodzi">
+  <meta property="og:description" content="Odkryj kolory, które podkreślają Twój naturalny urok. Analiza kolorystyczna stacjonarnie w Łodzi oraz online.">
+  <meta property="og:url" content="https://matifabij-cloud.github.io/karolina/">
+  <meta property="og:image" content="https://matifabij-cloud.github.io/karolina/DSC_4833_kopia.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -854,9 +864,45 @@
       margin-top: 18px;
     }
     .booking-pay strong { color: var(--navy); font-weight: 600; }
+    .booking-info {
+      max-width: 640px;
+      margin: 22px auto 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+    .booking-info a { color: var(--navy); text-decoration: underline; }
     @media (max-width: 768px) {
       .cal-panel { min-height: 600px; }
     }
+
+    /* ── OPINIE ── */
+    #opinie { background: var(--white); padding: var(--pad-y) var(--pad-x); }
+    .opinie__header { max-width: var(--max-w); margin: 0 auto clamp(40px,5vw,56px); text-align: center; }
+    .opinie__header .section-eyebrow { justify-content: center; }
+    #opinie h2 { color: var(--navy); margin-bottom: 14px; }
+    .opinie__grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(18px,2.5vw,28px); }
+    .opinie__card { background: var(--cream); border: 1px solid var(--cream-dk); border-radius: var(--radius); padding: 30px 28px; display: flex; flex-direction: column; }
+    .opinie__stars { color: var(--navy); letter-spacing: 2px; margin-bottom: 14px; font-size: .9rem; }
+    .opinie__text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; line-height: 1.5; color: #2C2C44; margin-bottom: 18px; flex: 1; }
+    .opinie__author { font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 500; letter-spacing: .06em; color: var(--text-body); }
+    @media (max-width: 900px) { .opinie__grid { grid-template-columns: 1fr; max-width: 520px; } }
+
+    /* ── FAQ ── */
+    #faq { background: var(--white); padding: var(--pad-y) var(--pad-x); }
+    .faq__header { max-width: 760px; margin: 0 auto clamp(40px,5vw,56px); text-align: center; }
+    .faq__header .section-eyebrow { justify-content: center; }
+    #faq h2 { color: var(--navy); margin-bottom: 14px; }
+    .faq__list { max-width: 760px; margin: 0 auto; }
+    .faq__item { border-bottom: 1px solid var(--cream-dk); }
+    .faq__item summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; color: var(--navy); }
+    .faq__item summary::-webkit-details-marker { display: none; }
+    .faq__item summary::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 1.4rem; color: var(--navy); }
+    .faq__item[open] summary::after { content: '–'; }
+    .faq__answer { padding: 0 0 22px; font-family: 'Inter', sans-serif; font-size: .95rem; font-weight: 300; color: var(--text-body); line-height: 1.8; }
 
     /* ── KONTAKT ── */
     #kontakt { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
@@ -1180,6 +1226,32 @@
     </section>
 
 
+    <!-- ══ OPINIE ══ -->
+    <section id="opinie" aria-label="Opinie klientek">
+      <div class="opinie__header reveal">
+        <p class="section-eyebrow eyebrow-dark">Opinie</p>
+        <h2>Co mówią klientki</h2>
+      </div>
+      <div class="opinie__grid">
+        <div class="opinie__card reveal">
+          <div class="opinie__stars" aria-hidden="true">★★★★★</div>
+          <p class="opinie__text">„[DO UZUPEŁNIENIA: prawdziwa opinia klientki – wklej tutaj]"</p>
+          <p class="opinie__author">— [Imię], Łódź</p>
+        </div>
+        <div class="opinie__card reveal reveal-d1">
+          <div class="opinie__stars" aria-hidden="true">★★★★★</div>
+          <p class="opinie__text">„[DO UZUPEŁNIENIA: prawdziwa opinia klientki – wklej tutaj]"</p>
+          <p class="opinie__author">— [Imię], Łódź</p>
+        </div>
+        <div class="opinie__card reveal reveal-d2">
+          <div class="opinie__stars" aria-hidden="true">★★★★★</div>
+          <p class="opinie__text">„[DO UZUPEŁNIENIA: prawdziwa opinia klientki – wklej tutaj]"</p>
+          <p class="opinie__author">— [Imię], Łódź</p>
+        </div>
+      </div>
+    </section>
+
+
     <!-- ══ SEKCJA 3: USŁUGI ══ -->
     <section id="uslugi" aria-label="Usługi">
       <div class="uslugi__header reveal">
@@ -1329,17 +1401,47 @@
 
         <p class="booking-pay">Płatność: <strong>analiza stacjonarna</strong> – na miejscu; <strong>analiza online</strong> – przelew po rezerwacji.</p>
 
-        <form class="booking-consents" aria-label="Zgody przed rezerwacją">
-          <label class="consent">
-            <input type="checkbox">
-            <span>Akceptuję <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a> oraz zapoznałam/em się z <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Polityką prywatności</a>.</span>
-          </label>
-          <label class="consent">
-            <input type="checkbox">
-            <span>Wyrażam zgodę na przetwarzanie przesłanych zdjęć wyłącznie w celu wykonania analizy kolorystycznej (dotyczy analizy online).</span>
-          </label>
-          <p class="booking-consents__note">Zgody potwierdzasz również w trakcie rezerwacji w kalendarzu oraz przy wysyłce zdjęć.</p>
-        </form>
+        <p class="booking-info">
+          Rezerwując termin, akceptujesz <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a>
+          oraz <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Politykę prywatności</a>.
+          W przypadku analizy online wyrażasz również zgodę na przetwarzanie przesłanych zdjęć wyłącznie
+          w celu wykonania analizy. Zgody potwierdzasz w formularzu rezerwacji.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ══ FAQ ══ -->
+    <section id="faq" aria-label="Najczęstsze pytania">
+      <div class="faq__header reveal">
+        <p class="section-eyebrow eyebrow-dark">FAQ</p>
+        <h2>Najczęstsze pytania</h2>
+      </div>
+      <div class="faq__list reveal">
+        <details class="faq__item">
+          <summary>Dla kogo jest analiza kolorystyczna?</summary>
+          <div class="faq__answer">Dla każdej osoby, która chce ubierać się świadomie i podkreślać swój naturalny urok – niezależnie od wieku czy stylu. Po analizie wiesz, które kolory dodają Ci blasku, a których lepiej unikać.</div>
+        </details>
+        <details class="faq__item">
+          <summary>Ile trwa analiza stacjonarna?</summary>
+          <div class="faq__answer">Spotkanie stacjonarne w Łodzi trwa około 2,5 godziny – to spokojny czas tylko dla Ciebie, bez pośpiechu.</div>
+        </details>
+        <details class="faq__item">
+          <summary>Jak mam się przygotować do analizy?</summary>
+          <div class="faq__answer">Przed spotkaniem (lub przed wysłaniem zdjęć w wersji online) otrzymujesz ode mnie szczegółową instrukcję, jak się przygotować, aby analiza była jak najbardziej precyzyjna i miarodajna.</div>
+        </details>
+        <details class="faq__item">
+          <summary>Czym różni się analiza online od stacjonarnej?</summary>
+          <div class="faq__answer">W wersji online analizę wykonuję na podstawie przesłanych przez Ciebie zdjęć i w ciągu 14 dni otrzymujesz obszerną prezentację (ok. 100 stron). Wersja stacjonarna to spotkanie na żywo z chustami i ramami kolorystycznymi.</div>
+        </details>
+        <details class="faq__item">
+          <summary>Jak wygląda płatność?</summary>
+          <div class="faq__answer">Analiza stacjonarna – płatność na miejscu w dniu spotkania. Analiza online – przelew po dokonaniu rezerwacji; realizacja rozpoczyna się po zaksięgowaniu wpłaty.</div>
+        </details>
+        <details class="faq__item">
+          <summary>Czy mogę zmienić lub odwołać termin?</summary>
+          <div class="faq__answer">Tak. Jeśli nie możesz pojawić się w umówionym terminie, daj mi znać odpowiednio wcześniej, a wspólnie ustalimy nowy termin.</div>
+        </details>
       </div>
     </section>
 
