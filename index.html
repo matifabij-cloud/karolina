@@ -213,6 +213,8 @@
     }
     .navbar__links a:hover { color: var(--white); }
     .navbar__links a:hover::after { width: 100%; }
+    .navbar__links a.active { color: var(--white); }
+    .navbar__links a.active::after { width: 100%; }
     .navbar__ig { display: flex; align-items: center; color: rgba(255,255,255,.68); }
     .navbar__ig::after { display: none; }
     .navbar__ig:hover { color: var(--white); }
@@ -370,7 +372,7 @@
       display: grid;
       grid-template-columns: 5fr 7fr;
       gap: clamp(44px, 7vw, 100px);
-      align-items: start;
+      align-items: center;
     }
     .o-mnie__img-frame {
       overflow: hidden;
@@ -891,19 +893,6 @@
     .opinie__author { font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 500; letter-spacing: .06em; color: var(--text-body); }
     @media (max-width: 900px) { .opinie__grid { grid-template-columns: 1fr; max-width: 520px; } }
 
-    /* ── FAQ ── */
-    #faq { background: var(--white); padding: var(--pad-y) var(--pad-x); }
-    .faq__header { max-width: 760px; margin: 0 auto clamp(40px,5vw,56px); text-align: center; }
-    .faq__header .section-eyebrow { justify-content: center; }
-    #faq h2 { color: var(--navy); margin-bottom: 14px; }
-    .faq__list { max-width: 760px; margin: 0 auto; }
-    .faq__item { border-bottom: 1px solid var(--cream-dk); }
-    .faq__item summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; color: var(--navy); }
-    .faq__item summary::-webkit-details-marker { display: none; }
-    .faq__item summary::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 1.4rem; color: var(--navy); }
-    .faq__item[open] summary::after { content: '–'; }
-    .faq__answer { padding: 0 0 22px; font-family: 'Inter', sans-serif; font-size: .95rem; font-weight: 300; color: var(--text-body); line-height: 1.8; }
-
     /* ── KONTAKT ── */
     #kontakt { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
     .kontakt__inner { max-width: var(--max-w); margin: 0 auto; text-align: center; }
@@ -1411,41 +1400,6 @@
     </section>
 
 
-    <!-- ══ FAQ ══ -->
-    <section id="faq" aria-label="Najczęstsze pytania">
-      <div class="faq__header reveal">
-        <p class="section-eyebrow eyebrow-dark">FAQ</p>
-        <h2>Najczęstsze pytania</h2>
-      </div>
-      <div class="faq__list reveal">
-        <details class="faq__item">
-          <summary>Dla kogo jest analiza kolorystyczna?</summary>
-          <div class="faq__answer">Dla każdej osoby, która chce ubierać się świadomie i podkreślać swój naturalny urok – niezależnie od wieku czy stylu. Po analizie wiesz, które kolory dodają Ci blasku, a których lepiej unikać.</div>
-        </details>
-        <details class="faq__item">
-          <summary>Ile trwa analiza stacjonarna?</summary>
-          <div class="faq__answer">Spotkanie stacjonarne w Łodzi trwa około 2,5 godziny – to spokojny czas tylko dla Ciebie, bez pośpiechu.</div>
-        </details>
-        <details class="faq__item">
-          <summary>Jak mam się przygotować do analizy?</summary>
-          <div class="faq__answer">Przed spotkaniem (lub przed wysłaniem zdjęć w wersji online) otrzymujesz ode mnie szczegółową instrukcję, jak się przygotować, aby analiza była jak najbardziej precyzyjna i miarodajna.</div>
-        </details>
-        <details class="faq__item">
-          <summary>Czym różni się analiza online od stacjonarnej?</summary>
-          <div class="faq__answer">W wersji online analizę wykonuję na podstawie przesłanych przez Ciebie zdjęć i w ciągu 14 dni otrzymujesz obszerną prezentację (ok. 100 stron). Wersja stacjonarna to spotkanie na żywo z chustami i ramami kolorystycznymi.</div>
-        </details>
-        <details class="faq__item">
-          <summary>Jak wygląda płatność?</summary>
-          <div class="faq__answer">Analiza stacjonarna – płatność na miejscu w dniu spotkania. Analiza online – przelew po dokonaniu rezerwacji; realizacja rozpoczyna się po zaksięgowaniu wpłaty.</div>
-        </details>
-        <details class="faq__item">
-          <summary>Czy mogę zmienić lub odwołać termin?</summary>
-          <div class="faq__answer">Tak. Jeśli nie możesz pojawić się w umówionym terminie, daj mi znać odpowiednio wcześniej, a wspólnie ustalimy nowy termin.</div>
-        </details>
-      </div>
-    </section>
-
-
     <!-- ══ SEKCJA 5: KONTAKT ══ -->
     <section id="kontakt" aria-label="Kontakt">
       <div class="kontakt__inner reveal">
@@ -1598,6 +1552,24 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Scrollspy – podświetlanie aktywnej pozycji w menu */
+    (function () {
+      const links = Array.from(document.querySelectorAll('.navbar__links a[href^="#"]'));
+      const sections = links
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+      if (!sections.length) return;
+      function spy() {
+        const y = window.scrollY + 120;
+        let current = sections[0];
+        sections.forEach(s => { if (s.offsetTop <= y) current = s; });
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+      }
+      window.addEventListener('scroll', spy, { passive: true });
+      window.addEventListener('resize', spy);
+      spy();
+    })();
 
     /* Cookie banner */
     (function () {
