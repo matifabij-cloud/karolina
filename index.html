@@ -1303,7 +1303,7 @@
             </ul>
           </div>
           <div class="svc-card-cta">
-            <a href="#umow-sie" class="btn btn-white">Zarezerwuj termin</a>
+            <a href="#umow-sie" class="btn btn-white" data-cal-select="cal-stac">Zarezerwuj analizę stacjonarną</a>
           </div>
         </article>
 
@@ -1340,13 +1340,13 @@
             <li class="svc-step">
               <div class="svc-step__num" aria-hidden="true">3</div>
               <div class="svc-step__body">
-                <p class="svc-step__title">Otrzymujesz ebook</p>
+                <p class="svc-step__title">Otrzymujesz prezentację</p>
                 <p class="svc-step__text">W ciągu 14 dni od przesłania zdjęć otrzymujesz ode mnie obszerną prezentację (ok.&nbsp;100 stron).</p>
               </div>
             </li>
           </ul>
           <div class="svc-result">
-            <p class="svc-result__title">Co zawiera ebook (ok.&nbsp;100 stron)</p>
+            <p class="svc-result__title">Co zawiera prezentacja (ok.&nbsp;100 stron)</p>
             <ul class="svc-result__list">
               <li class="svc-result__item">Twoja paleta kolorów</li>
               <li class="svc-result__item">Szczegółowy opis typu urody</li>
@@ -1355,7 +1355,7 @@
             </ul>
           </div>
           <div class="svc-card-cta">
-            <a href="#umow-sie" class="btn btn-white">Zamów analizę online</a>
+            <a href="#umow-sie" class="btn btn-white" data-cal-select="cal-onl">Zarezerwuj analizę online</a>
           </div>
         </article>
       </div>
@@ -1588,15 +1588,19 @@
     (function () {
       const tabs = document.querySelectorAll('.booking-tab');
       if (!tabs.length) return;
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-          document.querySelectorAll('.cal-panel').forEach(p => p.classList.remove('is-active'));
-          tab.classList.add('is-active');
-          tab.setAttribute('aria-selected', 'true');
-          const target = document.getElementById(tab.dataset.target);
-          if (target) target.classList.add('is-active');
+      function activate(targetId) {
+        tabs.forEach(t => {
+          const on = t.dataset.target === targetId;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
+        document.querySelectorAll('.cal-panel').forEach(p => {
+          p.classList.toggle('is-active', p.id === targetId);
+        });
+      }
+      tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.target)));
+      document.querySelectorAll('[data-cal-select]').forEach(link => {
+        link.addEventListener('click', () => activate(link.dataset.calSelect));
       });
     })();
   </script>
