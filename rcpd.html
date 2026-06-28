@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>RCPD – Rejestr czynności przetwarzania (dokument wewnętrzny)</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;font-weight:300;color:#4A4A6A;background:#F9F6F2;line-height:1.7;padding:0 16px}
+    .doc{max-width:1100px;margin:0 auto;padding:50px 0 90px}
+    a{color:#0C1A4B}
+    .back{display:inline-block;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:30px;color:#0C1A4B;text-decoration:none}
+    .back:hover{text-decoration:underline}
+    h1{font-family:'Cormorant Garamond',serif;font-weight:600;color:#0C1A4B;font-size:2.2rem;line-height:1.15;margin-bottom:6px}
+    .updated{font-size:.82rem;color:#9090AA;margin-bottom:28px}
+    .note{background:#fff;border:1px solid #EEE9E3;border-radius:3px;padding:16px 20px;font-size:.86rem;margin:18px 0 28px}
+    .todo{background:#FFF3CD;border:1px solid #E6D27A;border-radius:3px;padding:1px 6px;color:#7a5d00;font-weight:500;font-size:.9em}
+    table{width:100%;border-collapse:collapse;font-size:.82rem;background:#fff;border:1px solid #E3DDD4}
+    th,td{border:1px solid #E3DDD4;padding:9px 11px;vertical-align:top;text-align:left}
+    th{background:#0C1A4B;color:#fff;font-weight:500;font-size:.78rem;letter-spacing:.02em}
+    tr:nth-child(even) td{background:#FBF9F6}
+    h2{font-family:'Cormorant Garamond',serif;font-weight:500;color:#0C1A4B;font-size:1.3rem;margin:34px 0 12px}
+    p{font-size:.9rem;margin-bottom:10px}
+    .btn-print{display:inline-block;margin-top:24px;background:#0C1A4B;color:#fff;border:none;border-radius:3px;padding:11px 24px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif}
+    @media print{.back,.btn-print,.note{display:none}body{background:#fff}}
+  </style>
+</head>
+<body>
+  <div class="doc">
+    <a href="index.html" class="back">← Powrót na stronę główną</a>
+    <h1>Rejestr czynności przetwarzania danych (RCPD)</h1>
+    <p class="updated">Dokument wewnętrzny administratora · art. 30 RODO</p>
+
+    <div class="note">
+      ⚠️ To <strong>dokument wewnętrzny</strong> – nie publikuj go na stronie ani nie linkuj publicznie. Trzymaj go u siebie (wydrukowany lub jako PDF) i okaż na żądanie organu (UODO). Uzupełnij pola <span class="todo">[DO UZUPEŁNIENIA]</span> i aktualizuj przy zmianach.
+    </div>
+
+    <p><strong>Administrator danych:</strong> Karolina Fabijańczyk (Paleta Stylu), ul. Centralna 39, 91-117 Łódź, e-mail: paleta.stylu1@gmail.com, tel. 604 341 695. Działalność nierejestrowana.</p>
+
+    <h2>Czynności przetwarzania</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Czynność</th>
+          <th>Cel</th>
+          <th>Kategorie osób</th>
+          <th>Kategorie danych</th>
+          <th>Podstawa prawna</th>
+          <th>Odbiorcy / procesorzy</th>
+          <th>Okres przechowywania</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rezerwacja i realizacja usługi</td>
+          <td>Umówienie i wykonanie analizy kolorystycznej</td>
+          <td>Klientki</td>
+          <td>Imię, nazwisko, e-mail, telefon</td>
+          <td>Art. 6 ust. 1 lit. b RODO (umowa)</td>
+          <td>Cal.com (kalendarz), dostawca poczty</td>
+          <td><span class="todo">[DO UZUPEŁNIENIA: np. czas realizacji + okres przedawnienia roszczeń]</span></td>
+        </tr>
+        <tr>
+          <td>Przetwarzanie zdjęć (analiza online)</td>
+          <td>Wykonanie analizy na podstawie wizerunku</td>
+          <td>Klientki</td>
+          <td><strong>Wizerunek / dane szczególne</strong> (zdjęcia twarzy)</td>
+          <td>Art. 9 ust. 2 lit. a RODO (wyraźna zgoda)</td>
+          <td>Dostawca poczty / dysku do odbioru zdjęć</td>
+          <td><span class="todo">[DO UZUPEŁNIENIA: np. usunięcie do 30 dni po realizacji]</span></td>
+        </tr>
+        <tr>
+          <td>Płatności i rozliczenia</td>
+          <td>Przyjęcie płatności, rachunek na żądanie</td>
+          <td>Klientki</td>
+          <td>Imię, nazwisko, dane do przelewu</td>
+          <td>Art. 6 ust. 1 lit. c RODO (obowiązki prawne)</td>
+          <td>Bank</td>
+          <td>Okres wymagany przepisami podatkowymi</td>
+        </tr>
+        <tr>
+          <td>Korespondencja / kontakt</td>
+          <td>Odpowiadanie na zapytania</td>
+          <td>Osoby kontaktujące się</td>
+          <td>Imię, e-mail/telefon, treść wiadomości</td>
+          <td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes)</td>
+          <td>Dostawca poczty (Google)</td>
+          <td><span class="todo">[DO UZUPEŁNIENIA: np. do 12 miesięcy]</span></td>
+        </tr>
+        <tr>
+          <td>Opinie / wizerunek w marketingu (opcjonalnie)</td>
+          <td>Publikacja opinii / metamorfoz</td>
+          <td>Klientki</td>
+          <td>Imię, opinia, ewentualnie wizerunek</td>
+          <td>Art. 6 ust. 1 lit. a RODO (zgoda)</td>
+          <td>Instagram, strona WWW</td>
+          <td>Do cofnięcia zgody</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Zabezpieczenia (opis ogólny)</h2>
+    <p>Dostęp do danych ma wyłącznie administrator. Konta chronione silnymi hasłami i (gdzie możliwe) weryfikacją dwuetapową. Zdjęcia usuwane po wykonaniu usługi. Korzystam z usług dostawców zapewniających odpowiedni poziom ochrony (umowy powierzenia / DPA).</p>
+
+    <button class="btn-print" onclick="window.print()">Drukuj / zapisz PDF</button>
+  </div>
+</body>
+</html>
