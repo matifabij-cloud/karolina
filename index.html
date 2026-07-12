@@ -489,10 +489,9 @@
       padding: clamp(28px,4vw,52px);
       position: relative;
       overflow: hidden;
-      /* 9 rows — row 7 (svc-steps) grows to fill,
-         aligning svc-result and svc-cta w obu kartach */
-      display: grid;
-      grid-template-rows: auto auto auto auto auto auto 1fr auto auto;
+      /* Flex: treść płynie od góry, przycisk przypięty do dołu */
+      display: flex;
+      flex-direction: column;
       transition: background .3s, border-color .3s, transform .3s;
     }
     .svc-card::after {
@@ -568,7 +567,7 @@
       letter-spacing: .02em;
       margin-bottom: 20px;
     }
-    .svc-steps { display: flex; flex-direction: column; gap: 18px; align-self: start; padding-bottom: 0; }
+    .svc-steps { display: flex; flex-direction: column; gap: 18px; padding-bottom: 0; }
     .svc-step  { display: flex; gap: 14px; }
 
     /* Step numbers — plain white circle, NO gold */
@@ -634,7 +633,7 @@
       color: rgba(255,255,255,.35);
       flex-shrink: 0;
     }
-    .svc-card-cta { padding-top: 32px; }
+    .svc-card-cta { padding-top: 32px; margin-top: auto; }
     .svc-card-cta .btn { width: 100%; }
 
     /* ── UMÓW SIĘ ── */
