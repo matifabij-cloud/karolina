@@ -6,7 +6,7 @@ Gdy zbierzesz 2–3 opinie od klientek, dodasz je tak:
 ## Krok po kroku (na github.com)
 
 1. Wejdź na swoje repozytorium **matifabij-cloud/karolina**.
-2. U góry wybierz gałąź **`claude/modest-clarke-2ehqp9`** (tę samą, na której działa strona).
+2. U góry wybierz gałąź **`main`** (główna gałąź strony).
 3. Kliknij plik **`index.html`**, a potem ikonę **ołówka** (Edit / „Edytuj").
 4. Wciśnij **Ctrl+F** i wpisz: `id="opinie"` — przeskoczysz do sekcji opinii.
 5. **Pokaż sekcję:** w linijce `<section id="opinie" ... hidden>` **usuń samo słowo** ` hidden`.
