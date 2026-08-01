@@ -911,6 +911,21 @@
       line-height: 1.7;
     }
     .booking-info a { color: var(--navy); text-decoration: underline; }
+    .booking-panel { display: none; }
+    .booking-panel.is-active { display: block; }
+    .order-box {
+      background: var(--white);
+      border: 1px solid var(--cream-dk);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(0,0,0,.055);
+      padding: clamp(28px,4vw,48px);
+    }
+    .order-box__title { font-family: 'Cormorant Garamond', serif; color: var(--navy); font-size: clamp(1.4rem,2.5vw,1.8rem); font-weight: 500; margin-bottom: 22px; }
+    .order-steps { padding-left: 20px; margin: 0 0 22px; display: flex; flex-direction: column; gap: 12px; }
+    .order-steps li { font-family: 'Inter', sans-serif; font-size: .95rem; color: var(--text-body); line-height: 1.6; padding-left: 4px; }
+    .order-note { font-family: 'Inter', sans-serif; font-size: .9rem; font-style: italic; color: var(--text-body); line-height: 1.7; margin-bottom: 26px; }
+    .order-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    @media (max-width: 420px) { .order-actions .btn { width: 100%; } }
     @media (max-width: 768px) {
       .booking-frame iframe { height: 640px; }
     }
@@ -1350,7 +1365,7 @@
             </ul>
           </div>
           <div class="svc-card-cta">
-            <a href="#umow-sie" class="btn btn-white" data-cal-url="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-stacjonarna">Zarezerwuj analizę stacjonarną</a>
+            <a href="#umow-sie" class="btn btn-white" data-target-panel="panel-stac">Zarezerwuj analizę stacjonarną</a>
           </div>
         </article>
 
@@ -1401,7 +1416,7 @@
             </ul>
           </div>
           <div class="svc-card-cta">
-            <a href="#umow-sie" class="btn btn-white" data-cal-url="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-online">Zarezerwuj analizę online</a>
+            <a href="#umow-sie" class="btn btn-white" data-target-panel="panel-onl">Zamów analizę online</a>
           </div>
         </article>
       </div>
@@ -1414,35 +1429,54 @@
         <!-- Eyebrow "Zarezerwuj termin" USUNIĘTY zgodnie z instrukcją -->
         <h2>Umów się</h2>
         <p class="umow__lead">
-          Wybierz rodzaj analizy i zarezerwuj dogodny termin bezpośrednio
-          w kalendarzu online.
+          Analiza stacjonarna – wybierz dogodny termin w kalendarzu.
+          Analiza online – zamów mailowo, bez umawiania spotkania.
         </p>
       </div>
 
       <div class="booking-wrap reveal">
         <p class="booking-pick">Wybierz rodzaj analizy:</p>
         <div class="booking-tabs" role="tablist" aria-label="Rodzaj analizy">
-          <button type="button" class="booking-tab is-active" role="tab" aria-selected="true" data-url="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-stacjonarna">
-            Analiza stacjonarna · Łódź
+          <button type="button" class="booking-tab is-active" role="tab" aria-selected="true" data-target="panel-stac">
+            Analiza stacjonarna &middot; Łódź
           </button>
-          <button type="button" class="booking-tab" role="tab" aria-selected="false" data-url="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-online">
+          <button type="button" class="booking-tab" role="tab" aria-selected="false" data-target="panel-onl">
             Analiza online
           </button>
         </div>
 
-        <div class="booking-frame">
-          <iframe id="cal-frame" title="Rezerwacja terminu – kalendarz"
-                  src="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-stacjonarna"
-                  loading="lazy"></iframe>
+        <!-- Panel stacjonarny: kalendarz -->
+        <div id="panel-stac" class="booking-panel is-active">
+          <div class="booking-frame">
+            <iframe id="cal-frame" title="Rezerwacja terminu &ndash; kalendarz"
+                    src="https://cal.com/karolina-fabijanczyk-hevfbd/analiza-kolorsytyczna-stacjonarna"
+                    loading="lazy"></iframe>
+          </div>
+          <p class="booking-pay"><strong>Płatność:</strong> na miejscu, w dniu spotkania.</p>
         </div>
 
-        <p class="booking-pay">Płatność: <strong>analiza stacjonarna</strong> – na miejscu; <strong>analiza online</strong> – przelew po rezerwacji.</p>
+        <!-- Panel online: zamówienie (bez kalendarza) -->
+        <div id="panel-onl" class="booking-panel">
+          <div class="order-box">
+            <h3 class="order-box__title">Jak zamówić analizę online</h3>
+            <ol class="order-steps">
+              <li>Napisz do mnie e-mailem lub na Instagramie, że chcesz analizę online.</li>
+              <li>Otrzymasz ode mnie formularz z instrukcją, jak wykonać zdjęcia, oraz dane do przelewu.</li>
+              <li>Przesyłasz zdjęcia i robisz przelew (500 zł).</li>
+              <li>W ciągu 14 dni od otrzymania zdjęć wysyłam Ci obszerną prezentację (ok. 100 stron).</li>
+            </ol>
+            <p class="order-note">Analiza online nie wymaga spotkania na żywo ani kamery &ndash; wykonuję ją na podstawie Twoich zdjęć, w dogodnym dla mnie czasie.</p>
+            <div class="order-actions">
+              <a class="btn btn-navy" href="mailto:paleta.stylu1@gmail.com?subject=Zamowienie%20analizy%20online&body=Cze%C5%9B%C4%87%2C%20chcia%C5%82abym%20zam%C3%B3wi%C4%87%20analiz%C4%99%20kolorystyczn%C4%85%20online.">Napisz e-mail</a>
+              <a class="btn btn-outline" href="https://www.instagram.com/paleta.stylu/" target="_blank" rel="noopener">Napisz na Instagramie</a>
+            </div>
+          </div>
+        </div>
 
         <p class="booking-info">
-          Rezerwując termin, akceptujesz <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a>
+          Rezerwując lub zamawiając analizę, akceptujesz <a href="regulamin.html" target="_blank" rel="noopener">Regulamin</a>
           oraz <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">Politykę prywatności</a>.
-          W przypadku analizy online wyrażasz również zgodę na przetwarzanie przesłanych zdjęć wyłącznie
-          w celu wykonania analizy. Zgody potwierdzasz w formularzu rezerwacji.
+          W przypadku analizy online wyrażasz również zgodę na przetwarzanie przesłanych zdjęć wyłącznie w celu wykonania analizy.
         </p>
       </div>
     </section>
@@ -1632,22 +1666,23 @@
       });
     })();
 
-    /* Kalendarz cal.com – przełączanie adresu w iframe */
+    /* Przełączanie paneli: kalendarz (stacjonarna) / zamówienie (online) */
     (function () {
-      const frame = document.getElementById('cal-frame');
       const tabs = document.querySelectorAll('.booking-tab');
-      if (!frame || !tabs.length) return;
-      function activate(url) {
+      if (!tabs.length) return;
+      function activate(targetId) {
         tabs.forEach(t => {
-          const on = t.dataset.url === url;
+          const on = t.dataset.target === targetId;
           t.classList.toggle('is-active', on);
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
-        if (frame.getAttribute('src') !== url) frame.setAttribute('src', url);
+        document.querySelectorAll('.booking-panel').forEach(p => {
+          p.classList.toggle('is-active', p.id === targetId);
+        });
       }
-      tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.url)));
-      document.querySelectorAll('[data-cal-url]').forEach(link => {
-        link.addEventListener('click', () => activate(link.dataset.calUrl));
+      tabs.forEach(tab => tab.addEventListener('click', () => activate(tab.dataset.target)));
+      document.querySelectorAll('[data-target-panel]').forEach(link => {
+        link.addEventListener('click', () => activate(link.dataset.targetPanel));
       });
     })();
   </script>
